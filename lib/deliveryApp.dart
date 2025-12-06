@@ -5,7 +5,7 @@ void main() {
 }
 
 class FoodDeliveryApp extends StatelessWidget {
-  const FoodDeliveryApp({Key? key}) : super(key: key);
+  const FoodDeliveryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class FoodDeliveryApp extends StatelessWidget {
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -61,7 +61,9 @@ class _MainScreenState extends State<MainScreen> {
 
   void _addToCart(Map<String, dynamic> item) {
     setState(() {
-      final existingIndex = _cartItems.indexWhere((i) => i['name'] == item['name']);
+      final existingIndex = _cartItems.indexWhere(
+        (i) => i['name'] == item['name'],
+      );
       if (existingIndex >= 0) {
         _cartItems[existingIndex]['quantity']++;
       } else {
@@ -100,10 +102,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-            ),
+            BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10),
           ],
         ),
         child: BottomAppBar(
@@ -141,7 +140,10 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   child: Text(
                     '${_cartItems.length}',
-                    style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -159,11 +161,7 @@ class _MainScreenState extends State<MainScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            color: isSelected ? Colors.orange : Colors.grey,
-            size: 28,
-          ),
+          Icon(icon, color: isSelected ? Colors.orange : Colors.grey, size: 28),
           const SizedBox(height: 4),
           Text(
             label,
@@ -182,7 +180,7 @@ class _MainScreenState extends State<MainScreen> {
 class HomePage extends StatelessWidget {
   final Function(Map<String, dynamic>) onRestaurantTap;
 
-  const HomePage({Key? key, required this.onRestaurantTap}) : super(key: key);
+  const HomePage({super.key, required this.onRestaurantTap});
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +218,11 @@ class HomePage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.location_on, color: Colors.orange, size: 20),
+                      const Icon(
+                        Icons.location_on,
+                        color: Colors.orange,
+                        size: 20,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         'Deliver to',
@@ -238,7 +240,10 @@ class HomePage extends StatelessWidget {
               CircleAvatar(
                 radius: 24,
                 backgroundColor: Colors.orange.shade100,
-                child: const Icon(Icons.notifications_rounded, color: Colors.orange),
+                child: const Icon(
+                  Icons.notifications_rounded,
+                  color: Colors.orange,
+                ),
               ),
             ],
           ),
@@ -279,9 +284,17 @@ class HomePage extends StatelessWidget {
 
   Widget _buildCategories() {
     final categories = [
-      {'icon': Icons.fastfood_rounded, 'name': 'Burger', 'color': Colors.orange},
+      {
+        'icon': Icons.fastfood_rounded,
+        'name': 'Burger',
+        'color': Colors.orange,
+      },
       {'icon': Icons.local_pizza_rounded, 'name': 'Pizza', 'color': Colors.red},
-      {'icon': Icons.restaurant_rounded, 'name': 'Asian', 'color': Colors.green},
+      {
+        'icon': Icons.restaurant_rounded,
+        'name': 'Asian',
+        'color': Colors.green,
+      },
       {'icon': Icons.cake_rounded, 'name': 'Dessert', 'color': Colors.pink},
       {'icon': Icons.coffee_rounded, 'name': 'Coffee', 'color': Colors.brown},
     ];
@@ -316,7 +329,10 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   category['name'] as String,
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
             ),
@@ -354,7 +370,10 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(20),
@@ -380,7 +399,10 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -442,7 +464,7 @@ class HomePage extends StatelessWidget {
       },
     ];
 
-    return Container(
+    return SizedBox(
       height: 260,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -473,7 +495,9 @@ class HomePage extends StatelessWidget {
                     height: 150,
                     decoration: BoxDecoration(
                       color: Colors.orange.shade100,
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
                     ),
                     child: Center(
                       child: Icon(
@@ -498,16 +522,27 @@ class HomePage extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           restaurant['cuisine'] as String,
-                          style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 13,
+                          ),
                         ),
                         const SizedBox(height: 12),
                         Row(
                           children: [
-                            const Icon(Icons.star, color: Colors.amber, size: 18),
+                            const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                              size: 18,
+                            ),
                             const SizedBox(width: 4),
                             Text('${restaurant['rating']}'),
                             const SizedBox(width: 16),
-                            const Icon(Icons.access_time, color: Colors.grey, size: 18),
+                            const Icon(
+                              Icons.access_time,
+                              color: Colors.grey,
+                              size: 18,
+                            ),
                             const SizedBox(width: 4),
                             Text(restaurant['time'] as String),
                             const Spacer(),
@@ -558,7 +593,11 @@ class HomePage extends StatelessWidget {
                   color: Colors.orange.shade100,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.restaurant, color: Colors.orange, size: 40),
+                child: const Icon(
+                  Icons.restaurant,
+                  color: Colors.orange,
+                  size: 40,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -584,7 +623,11 @@ class HomePage extends StatelessWidget {
                         const SizedBox(width: 4),
                         const Text('4.5'),
                         const SizedBox(width: 16),
-                        Icon(Icons.location_on, color: Colors.grey[400], size: 16),
+                        Icon(
+                          Icons.location_on,
+                          color: Colors.grey[400],
+                          size: 16,
+                        ),
                         const SizedBox(width: 4),
                         Text('${index + 1}.${index + 2} km'),
                       ],
@@ -605,20 +648,44 @@ class RestaurantDetailPage extends StatelessWidget {
   final Function(Map<String, dynamic>) onAddToCart;
 
   const RestaurantDetailPage({
-    Key? key,
+    super.key,
     required this.restaurant,
     required this.onAddToCart,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final menuItems = [
-      {'name': 'Classic Burger', 'price': 8.99, 'description': 'Beef patty with lettuce, tomato, cheese'},
-      {'name': 'Cheeseburger', 'price': 9.99, 'description': 'Double cheese with special sauce'},
-      {'name': 'Chicken Burger', 'price': 7.99, 'description': 'Crispy chicken with mayo'},
-      {'name': 'Veggie Burger', 'price': 7.49, 'description': 'Plant-based patty with fresh veggies'},
-      {'name': 'Bacon Burger', 'price': 10.99, 'description': 'Bacon strips with BBQ sauce'},
-      {'name': 'Mushroom Burger', 'price': 9.49, 'description': 'Grilled mushrooms with swiss cheese'},
+      {
+        'name': 'Classic Burger',
+        'price': 8.99,
+        'description': 'Beef patty with lettuce, tomato, cheese',
+      },
+      {
+        'name': 'Cheeseburger',
+        'price': 9.99,
+        'description': 'Double cheese with special sauce',
+      },
+      {
+        'name': 'Chicken Burger',
+        'price': 7.99,
+        'description': 'Crispy chicken with mayo',
+      },
+      {
+        'name': 'Veggie Burger',
+        'price': 7.49,
+        'description': 'Plant-based patty with fresh veggies',
+      },
+      {
+        'name': 'Bacon Burger',
+        'price': 10.99,
+        'description': 'Bacon strips with BBQ sauce',
+      },
+      {
+        'name': 'Mushroom Burger',
+        'price': 9.49,
+        'description': 'Grilled mushrooms with swiss cheese',
+      },
     ];
 
     return Scaffold(
@@ -682,19 +749,28 @@ class RestaurantDetailPage extends StatelessWidget {
                       const SizedBox(height: 8),
                       Text(
                         restaurant['cuisine'] as String,
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 16,
-                        ),
+                        style: TextStyle(color: Colors.grey[600], fontSize: 16),
                       ),
                       const SizedBox(height: 16),
                       Row(
                         children: [
-                          _buildInfoChip(Icons.star, '${restaurant['rating']}', Colors.amber),
+                          _buildInfoChip(
+                            Icons.star,
+                            '${restaurant['rating']}',
+                            Colors.amber,
+                          ),
                           const SizedBox(width: 12),
-                          _buildInfoChip(Icons.access_time, restaurant['time'] as String, Colors.orange),
+                          _buildInfoChip(
+                            Icons.access_time,
+                            restaurant['time'] as String,
+                            Colors.orange,
+                          ),
                           const SizedBox(width: 12),
-                          _buildInfoChip(Icons.delivery_dining, restaurant['delivery'] as String, Colors.green),
+                          _buildInfoChip(
+                            Icons.delivery_dining,
+                            restaurant['delivery'] as String,
+                            Colors.green,
+                          ),
                         ],
                       ),
                       const SizedBox(height: 24),
@@ -715,7 +791,10 @@ class RestaurantDetailPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final item = menuItems[index];
                     return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 8,
+                      ),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -780,7 +859,9 @@ class RestaurantDetailPage extends StatelessWidget {
                               onAddToCart(item);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('${item['name']} added to cart'),
+                                  content: Text(
+                                    '${item['name']} added to cart',
+                                  ),
                                   duration: const Duration(seconds: 1),
                                   backgroundColor: Colors.green,
                                 ),
@@ -792,10 +873,7 @@ class RestaurantDetailPage extends StatelessWidget {
                                 color: Colors.orange,
                                 shape: BoxShape.circle,
                               ),
-                              child: const Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
+                              child: const Icon(Icons.add, color: Colors.white),
                             ),
                           ),
                         ],
@@ -825,10 +903,7 @@ class RestaurantDetailPage extends StatelessWidget {
           const SizedBox(width: 4),
           Text(
             label,
-            style: TextStyle(
-              color: color,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -841,10 +916,10 @@ class CartPage extends StatefulWidget {
   final Function(List<Map<String, dynamic>>) onUpdateCart;
 
   const CartPage({
-    Key? key,
+    super.key,
     required this.cartItems,
     required this.onUpdateCart,
-  }) : super(key: key);
+  });
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -859,7 +934,10 @@ class _CartPageState extends State<CartPage> {
     items = List.from(widget.cartItems);
   }
 
-  double get subtotal => items.fold(0, (sum, item) => sum + (item['price'] as double) * (item['quantity'] as int));
+  double get subtotal => items.fold(
+    0,
+    (sum, item) => sum + (item['price'] as double) * (item['quantity'] as int),
+  );
   double get deliveryFee => 2.99;
   double get total => subtotal + deliveryFee;
 
@@ -867,7 +945,10 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Cart', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'My Cart',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -877,7 +958,11 @@ class _CartPageState extends State<CartPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.shopping_cart_outlined, size: 100, color: Colors.grey[300]),
+                  Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 100,
+                    color: Colors.grey[300],
+                  ),
                   const SizedBox(height: 16),
                   Text(
                     'Your cart is empty',
@@ -917,7 +1002,11 @@ class _CartPageState extends State<CartPage> {
                                 color: Colors.orange.shade50,
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: const Icon(Icons.fastfood, color: Colors.orange, size: 32),
+                              child: const Icon(
+                                Icons.fastfood,
+                                color: Colors.orange,
+                                size: 32,
+                              ),
                             ),
                             const SizedBox(width: 12),
                             Expanded(
@@ -984,7 +1073,11 @@ class _CartPageState extends State<CartPage> {
                                       color: Colors.orange,
                                       shape: BoxShape.circle,
                                     ),
-                                    child: const Icon(Icons.add, size: 18, color: Colors.white),
+                                    child: const Icon(
+                                      Icons.add,
+                                      size: 18,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -1038,7 +1131,10 @@ class _CartPageState extends State<CartPage> {
                           ),
                           child: const Text(
                             'Proceed to Checkout',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -1078,11 +1174,7 @@ class CheckoutPage extends StatefulWidget {
   final List<Map<String, dynamic>> cartItems;
   final double total;
 
-  const CheckoutPage({
-    Key? key,
-    required this.cartItems,
-    required this.total,
-  }) : super(key: key);
+  const CheckoutPage({super.key, required this.cartItems, required this.total});
 
   @override
   State<CheckoutPage> createState() => _CheckoutPageState();
@@ -1095,7 +1187,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Checkout',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -1117,7 +1212,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           color: Colors.orange.shade50,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Icon(Icons.location_on, color: Colors.orange),
+                        child: const Icon(
+                          Icons.location_on,
+                          color: Colors.orange,
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
@@ -1126,7 +1224,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           children: [
                             const Text(
                               'Home',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                             const SizedBox(height: 4),
                             Text(
@@ -1136,10 +1237,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           ],
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text('Change'),
-                      ),
+                      TextButton(onPressed: () {}, child: const Text('Change')),
                     ],
                   ),
                 ],
@@ -1149,11 +1247,26 @@ class _CheckoutPageState extends State<CheckoutPage> {
               'Payment Method',
               Column(
                 children: [
-                  _buildPaymentOption(0, Icons.credit_card, 'Credit Card', '**** 4242'),
+                  _buildPaymentOption(
+                    0,
+                    Icons.credit_card,
+                    'Credit Card',
+                    '**** 4242',
+                  ),
                   const SizedBox(height: 12),
-                  _buildPaymentOption(1, Icons.account_balance_wallet, 'Digital Wallet', 'bKash'),
+                  _buildPaymentOption(
+                    1,
+                    Icons.account_balance_wallet,
+                    'Digital Wallet',
+                    'bKash',
+                  ),
                   const SizedBox(height: 12),
-                  _buildPaymentOption(2, Icons.money, 'Cash on Delivery', 'Pay when you receive'),
+                  _buildPaymentOption(
+                    2,
+                    Icons.money,
+                    'Cash on Delivery',
+                    'Pay when you receive',
+                  ),
                 ],
               ),
             ),
@@ -1161,19 +1274,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
               'Order Summary',
               Column(
                 children: [
-                  ...widget.cartItems.map((item) => Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('${item['quantity']}x ${item['name']}'),
-                    Text(
-  '${((item['price'] as double) * (item['quantity'] as int)).toStringAsFixed(2)}',
-  style: TextStyle(fontWeight: FontWeight.bold),
-)
-                          ],
-                        ),
-                      )),
+                  ...widget.cartItems.map(
+                    (item) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('${item['quantity']}x ${item['name']}'),
+                          Text(
+                            ((item['price'] as double) * (item['quantity'] as int)).toStringAsFixed(2),
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   const Divider(),
                   const SizedBox(height: 8),
                   Row(
@@ -1181,11 +1296,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     children: [
                       const Text('Delivery Fee'),
                       Text(
-  '${(widget.total - widget.cartItems.fold<double>(
-    0,
-    (sum, item) => sum + (item['price'] as double) * (item['quantity'] as int),
-  )).toStringAsFixed(2)}',
-)
+                        (widget.total - widget.cartItems.fold<double>(0, (sum, item) => sum + (item['price'] as double) * (item['quantity'] as int))).toStringAsFixed(2),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 12),
@@ -1194,7 +1306,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     children: [
                       const Text(
                         'Total',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
                         '\${widget.total.toStringAsFixed(2)}',
@@ -1282,7 +1397,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildPaymentOption(int index, IconData icon, String title, String subtitle) {
+  Widget _buildPaymentOption(
+    int index,
+    IconData icon,
+    String title,
+    String subtitle,
+  ) {
     final isSelected = selectedPayment == index;
     return GestureDetector(
       onTap: () => setState(() => selectedPayment = index),
@@ -1325,13 +1445,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
 }
 
 class OrderTrackingPage extends StatelessWidget {
-  const OrderTrackingPage({Key? key}) : super(key: key);
+  const OrderTrackingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Track Order', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Track Order',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -1385,7 +1508,11 @@ class OrderTrackingPage extends StatelessWidget {
                         _buildConnector(true),
                         _buildStatusIcon(Icons.restaurant, 'Preparing', true),
                         _buildConnector(false),
-                        _buildStatusIcon(Icons.delivery_dining, 'On the way', false),
+                        _buildStatusIcon(
+                          Icons.delivery_dining,
+                          'On the way',
+                          false,
+                        ),
                       ],
                     ),
                   ),
@@ -1613,7 +1740,7 @@ class OrderTrackingPage extends StatelessWidget {
 }
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1651,7 +1778,7 @@ class SearchPage extends StatelessWidget {
 }
 
 class OrdersPage extends StatelessWidget {
-  const OrdersPage({Key? key}) : super(key: key);
+  const OrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1712,7 +1839,9 @@ class OrdersPage extends StatelessWidget {
                             child: Text(
                               index == 0 ? 'In Progress' : 'Delivered',
                               style: TextStyle(
-                                color: index == 0 ? Colors.orange : Colors.green,
+                                color: index == 0
+                                    ? Colors.orange
+                                    : Colors.green,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12,
                               ),
@@ -1739,7 +1868,8 @@ class OrdersPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const OrderTrackingPage(),
+                                  builder: (context) =>
+                                      const OrderTrackingPage(),
                                 ),
                               );
                             },
@@ -1765,7 +1895,7 @@ class OrdersPage extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1780,7 +1910,11 @@ class ProfilePage extends StatelessWidget {
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.orange.shade100,
-                    child: const Icon(Icons.person, size: 50, color: Colors.orange),
+                    child: const Icon(
+                      Icons.person,
+                      size: 50,
+                      color: Colors.orange,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   const Text(
@@ -1804,7 +1938,11 @@ class ProfilePage extends StatelessWidget {
             _buildMenuItem(Icons.person_outline, 'Edit Profile', () {}),
             _buildMenuItem(Icons.location_on_outlined, 'Addresses', () {}),
             _buildMenuItem(Icons.payment_outlined, 'Payment Methods', () {}),
-            _buildMenuItem(Icons.notifications_outlined, 'Notifications', () {}),
+            _buildMenuItem(
+              Icons.notifications_outlined,
+              'Notifications',
+              () {},
+            ),
             _buildMenuItem(Icons.help_outline, 'Help & Support', () {}),
             _buildMenuItem(Icons.info_outline, 'About', () {}),
             _buildMenuItem(Icons.logout, 'Logout', () {}, isDestructive: true),
@@ -1815,8 +1953,12 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String title, VoidCallback onTap,
-      {bool isDestructive = false}) {
+  Widget _buildMenuItem(
+    IconData icon,
+    String title,
+    VoidCallback onTap, {
+    bool isDestructive = false,
+  }) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
       decoration: BoxDecoration(
@@ -1824,10 +1966,7 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
-        leading: Icon(
-          icon,
-          color: isDestructive ? Colors.red : Colors.orange,
-        ),
+        leading: Icon(icon, color: isDestructive ? Colors.red : Colors.orange),
         title: Text(
           title,
           style: TextStyle(

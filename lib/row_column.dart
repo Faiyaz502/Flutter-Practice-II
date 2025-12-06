@@ -99,7 +99,103 @@ class _RowExampleState extends State<RowExample> {
                     padding: EdgeInsets.all(8.0),
                     margin: EdgeInsets.only(top: 16.0),
                     height: 200,
-                    decoration: BoxDecoration(color: Colors.amber),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(75),
+                    ),
+
+                    child: Text(
+                      "Contiainer with \n action on tap",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  print('Tapped on Contianer');
+                },
+                onLongPress: () {
+                  print('Long Pressed on Container');
+                },
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    margin: EdgeInsets.only(top: 16.0),
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+
+                    child: Text(
+                      "Contiainer with \n action on tap",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  print('Tapped on Contianer');
+                },
+                onLongPress: () {
+                  print('Long Pressed on Container');
+                },
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    margin: EdgeInsets.only(top: 16.0),
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        bottomRight: Radius.circular(40),
+                      ),
+                      border: Border.all(width: 5, color: Colors.black),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 11,
+                          color: Colors.amber,
+                          spreadRadius: 7,
+                        ),
+                      ],
+                    ),
+
+                    child: Text(
+                      "Contiainer with \n action on tap",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  print('Tapped on Contianer');
+                },
+                onLongPress: () {
+                  print('Long Pressed on Container');
+                },
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    margin: EdgeInsets.only(top: 16.0),
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      shape: BoxShape.circle, // circle in one option
+                      border: Border.all(width: 3),
+                    ),
 
                     child: Text(
                       "Contiainer with \n action on tap",
@@ -135,77 +231,36 @@ class _RowExampleState extends State<RowExample> {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  print('Tapped on Contianer');
-                },
-                onLongPress: () {
-                  print('Long Pressed on Container');
-                },
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    margin: EdgeInsets.only(top: 16.0),
-                    height: 200,
-                    decoration: BoxDecoration(color: Colors.amber),
 
-                    child: Text(
-                      "Contiainer with \n action on tap",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+              //Expended
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(height: 50, width: 50, color: Colors.blue),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Container(height: 50, width: 50, color: Colors.red),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      color: Colors.purple,
                     ),
                   ),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  print('Tapped on Contianer');
-                },
-                onLongPress: () {
-                  print('Long Pressed on Container');
-                },
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    margin: EdgeInsets.only(top: 16.0),
-                    height: 200,
-                    decoration: BoxDecoration(color: Colors.amber),
-
-                    child: Text(
-                      "Contiainer with \n action on tap",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Expanded(
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      color: Colors.green,
                     ),
                   ),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  print('Tapped on Contianer');
-                },
-                onLongPress: () {
-                  print('Long Pressed on Container');
-                },
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    margin: EdgeInsets.only(top: 16.0),
-                    height: 200,
-                    decoration: BoxDecoration(color: Colors.amber),
-
-                    child: Text(
-                      "Contiainer with \n action on tap",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
+                ],
               ),
             ],
           ),

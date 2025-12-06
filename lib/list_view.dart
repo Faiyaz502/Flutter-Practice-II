@@ -84,39 +84,62 @@ class ListViewFetchData extends StatefulWidget {
 class _ListViewFetchDataState extends State<ListViewFetchData> {
   @override
   Widget build(BuildContext context) {
-    var arr_names = ['Fahim', 'Faiyaz', 'Akib', 'Rakib', 'Sakib'];
+    var arrNames = ['Fahim', 'Faiyaz', 'Akib', 'Rakib', 'Sakib'];
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter List View"),
         backgroundColor: const Color.fromARGB(255, 233, 68, 68),
       ),
-      body:
-          // ListView.builder(
-          //   itemBuilder: (context, index) {
-          //     return Text(
-          //       arr_names[index],
-          //       style: TextStyle(fontSize: 21, fontWeight: FontWeight.w400),
-          //     );
-          //   },
-          //   itemCount: arr_names.length,
-          //   reverse: false,
-          //   itemExtent: 100,
-          //   scrollDirection: Axis.horizontal,
-          // ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 120, // give height for first ListView
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Text(
+                  arrNames[index],
+                  style: TextStyle(fontSize: 21, fontWeight: FontWeight.w400),
+                );
+              },
+              itemCount: arrNames.length,
+              reverse: false,
+              itemExtent: 100,
+              scrollDirection: Axis.horizontal,
+            ),
+          ),
+
+          SizedBox(height: 20),
+          // height must be enough for text
           ListView.separated(
+            shrinkWrap: true, // 👈 makes it take only needed height
+            physics: NeverScrollableScrollPhysics(), // 👈 disables scrolling
             itemBuilder: (context, index) {
-              return Text(
-                arr_names[index],
-                style: TextStyle(fontSize: 21, fontWeight: FontWeight.w400),
+              return ListTile(
+                leading: Container(
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                      "https://images.unsplash.com/photo-1513682121497-80211f36a7d3?q=80&w=388&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    ),
+                  ),
+                ),
+                title: Text(
+                  arrNames[index],
+                  style: TextStyle(fontFamily: 'fontMain', fontSize: 30),
+                ),
+                subtitle: Text("Number"),
+                trailing: Icon(Icons.add),
               );
             },
-            itemCount: arr_names.length,
+            itemCount: arrNames.length,
             reverse: false,
-            separatorBuilder: (BuildContext context, int index) {
-              return Divider(height: 100, thickness: 4);
+            separatorBuilder: (context, index) {
+              return Divider(height: 40, thickness: 4);
             },
           ),
+        ],
+      ),
     );
   }
 }

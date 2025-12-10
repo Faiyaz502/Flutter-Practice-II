@@ -17,7 +17,12 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       title: "Flutter List View Example",
       home: ListViewFetchData(),
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(fontSize: 21, color: Colors.amber),
+        ),
+      ),
+
       debugShowCheckedModeBanner: false,
     );
   }
@@ -35,8 +40,10 @@ class _ListViewExampleState extends State<ListViewExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter List View"),
-        backgroundColor: const Color.fromARGB(255, 233, 68, 68),
+        title: Text(
+          "Flutter List View",
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
       ),
       body: ListView(
         children: [
@@ -87,10 +94,7 @@ class _ListViewFetchDataState extends State<ListViewFetchData> {
     var arrNames = ['Fahim', 'Faiyaz', 'Akib', 'Rakib', 'Sakib'];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter List View"),
-        backgroundColor: const Color.fromARGB(255, 233, 68, 68),
-      ),
+      appBar: AppBar(title: Text("Flutter List View")),
       body: Column(
         children: [
           SizedBox(
@@ -99,7 +103,10 @@ class _ListViewFetchDataState extends State<ListViewFetchData> {
               itemBuilder: (context, index) {
                 return Text(
                   arrNames[index],
-                  style: TextStyle(fontSize: 21, fontWeight: FontWeight.w400),
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
                 );
               },
               itemCount: arrNames.length,
@@ -128,7 +135,10 @@ class _ListViewFetchDataState extends State<ListViewFetchData> {
                   arrNames[index],
                   style: TextStyle(fontFamily: 'fontMain', fontSize: 30),
                 ),
-                subtitle: Text("Number"),
+                subtitle: Text(
+                  "Number",
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
                 trailing: Icon(Icons.add),
               );
             },

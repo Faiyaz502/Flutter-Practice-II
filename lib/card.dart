@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const FoodDeliveryApp());
+  runApp(FoodDeliveryApp());
 }
 
+// ignore: must_be_immutable
 class FoodDeliveryApp extends StatelessWidget {
-  const FoodDeliveryApp({super.key});
+  FoodDeliveryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +31,38 @@ class CardExample extends StatefulWidget {
 }
 
 class _CardExampleState extends State<CardExample> {
+  var time = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SafeArea(
-          child: Card(
-            elevation: 10,
-            shadowColor: Colors.amber,
-            surfaceTintColor: Colors.red,
-            color: Colors.brown,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "hello",
-                style: TextStyle(fontSize: 40, color: Colors.black),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shadowColor: Colors.amber,
+                surfaceTintColor: Colors.red,
+                color: Colors.brown,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Current Year : ${time.year} Month:  ${time.month} Weekday:  ${time.weekday} Time- ${time.hour}: ${time.minute}',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                ),
               ),
-            ),
+
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    time = DateTime.now();
+                  });
+                },
+                child: Text("Get Time "),
+              ),
+            ],
           ),
         ),
       ),

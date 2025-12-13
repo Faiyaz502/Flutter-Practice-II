@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(FoodDeliveryApp());
@@ -33,6 +34,9 @@ class CardExample extends StatefulWidget {
 class _CardExampleState extends State<CardExample> {
   var time = DateTime.now();
 
+  var date = DateTime.now();
+  TimeOfDay timee = TimeOfDay.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +57,19 @@ class _CardExampleState extends State<CardExample> {
                   ),
                 ),
               ),
-
+              Card(
+                elevation: 10,
+                shadowColor: Colors.amber,
+                surfaceTintColor: Colors.red,
+                color: const Color.fromARGB(255, 218, 180, 166),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Current Time : ${DateFormat('jms').format(time)} ${DateFormat('EEEE').format(time)}',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -61,6 +77,45 @@ class _CardExampleState extends State<CardExample> {
                   });
                 },
                 child: Text("Get Time "),
+              ),
+              SizedBox(height: 20),
+
+              //Date time picker
+              Text(DateFormat('yMEd').format(date)),
+
+              ElevatedButton(
+                onPressed: () async {
+                  DateTime? datepick = await showDatePicker(
+                    context: context,
+                    firstDate: DateTime(2020),
+                    lastDate: DateTime(2027),
+                    initialDate: DateTime.now(),
+                  );
+                  setState(() {
+                    date = datepick == null ? DateTime.now() : datepick;
+                  });
+                },
+                child: Text("Show"),
+              ),
+              SizedBox(height: 20),
+
+              //Date time picker
+              Text(timee.format(context)),
+
+              ElevatedButton(
+                onPressed: () async {
+                  var timePick = await showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                    initialEntryMode: TimePickerEntryMode.input,
+                  );
+                  if (timePick != null) {
+                    setState(() {
+                      timee = timePick;
+                    });
+                  }
+                },
+                child: Text("Show"),
               ),
             ],
           ),
